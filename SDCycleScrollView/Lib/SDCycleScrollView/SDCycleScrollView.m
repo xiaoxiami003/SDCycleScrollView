@@ -170,14 +170,18 @@ NSString * const ID = @"SDCycleScrollViewCell";
     
     if (!self.backgroundImageView) {
         UIImageView *bgImageView = [UIImageView new];
-        if (self.placeholderImageViewContentMode) {
-            bgImageView.contentMode = self.placeholderImageViewContentMode;
-        }
+        bgImageView.contentMode = UIViewContentModeScaleToFill;
         [self insertSubview:bgImageView belowSubview:self.mainView];
         self.backgroundImageView = bgImageView;
     }
     
     self.backgroundImageView.image = placeholderImage;
+}
+
+- (void)setPlaceholderImageViewContentMode:(UIViewContentMode)placeholderImageViewContentMode {
+    _placeholderImageViewContentMode = placeholderImageViewContentMode;
+    
+    self.backgroundImageView.contentMode = placeholderImageViewContentMode;
 }
 
 - (void)setPageControlDotSize:(CGSize)pageControlDotSize
