@@ -170,7 +170,9 @@ NSString * const ID = @"SDCycleScrollViewCell";
     
     if (!self.backgroundImageView) {
         UIImageView *bgImageView = [UIImageView new];
-        bgImageView.contentMode = _bannerImageViewContentMode;
+        if (self.placeholderImageViewContentMode) {
+            bgImageView.contentMode = self.placeholderImageViewContentMode;
+        }
         [self insertSubview:bgImageView belowSubview:self.mainView];
         self.backgroundImageView = bgImageView;
     }
